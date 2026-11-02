@@ -1,6 +1,6 @@
 # Run LLM evals in GitHub Actions on every pull request
 
-Each folder runs the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. Each tool has its own workflow in [.github/workflows](.github/workflows).
+The first seven folders run the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. In the last two, the support bot drafts a reply to the same six messages, and an LLM judge grades it. Each folder has its own workflow in [.github/workflows](.github/workflows).
 
 | Folder | Results file | Secrets | Guide |
 |---|---|---|---|
@@ -11,6 +11,8 @@ Each folder runs the same evals with a different tool. The prompt classifies a c
 | [langfuse](langfuse) | evalship JSON, `eval-results.json` | `OPENAI_API_KEY`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` | [Langfuse experiments on every pull request](https://evalship.com/articles/langfuse-experiments-in-ci) |
 | [braintrust](braintrust) | evalship JSON, `eval-results.json` | `OPENAI_API_KEY`, `BRAINTRUST_API_KEY` | [Braintrust evals on every pull request](https://evalship.com/articles/braintrust-evals-in-ci) |
 | [langsmith](langsmith) | evalship JSON, `eval-results.json` | `OPENAI_API_KEY`, `LANGSMITH_API_KEY` | [LangSmith evaluations on every pull request](https://evalship.com/articles/langsmith-evals-in-ci) |
+| [deepeval](deepeval) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM evals with pytest in GitHub Actions: DeepEval](https://evalship.com/articles/llm-evals-with-pytest#deepeval) |
+| [llm-as-a-judge](llm-as-a-judge) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM as a judge: five mistakes in real eval suites](https://evalship.com/articles/llm-as-a-judge-mistakes) |
 
 To choose a tool, see [LLM evals on pull requests: how the tools compare](https://evalship.com/articles/llm-evals-on-pull-requests).
 

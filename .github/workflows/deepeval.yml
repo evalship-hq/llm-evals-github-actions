@@ -1,0 +1,29 @@
+name: deepeval
+on:
+  pull_request:
+    paths:
+      - deepeval/**
+      - .github/workflows/deepeval.yml
+  push:
+    branches: [main]
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: deepeval
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: pytest tests/evals --junitxml=eval-results.xml
+        continue-on-error: true # the comparison with main decides, not one failure
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: eval-results
+          path: deepeval/eval-results.xml
