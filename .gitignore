@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+
+# results files the evals write
+eval-results.xml
+eval-results.json
+results.json
+jest/reports/

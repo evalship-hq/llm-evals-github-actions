@@ -1,0 +1,33 @@
+name: promptfoo
+on:
+  pull_request:
+    paths:
+      - promptfoo/**
+      - .github/workflows/promptfoo.yml
+  push:
+    branches: [main]
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: promptfoo
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::notice::OPENAI_API_KEY is not set, so the evals are skipped."
+            exit 0
+          fi
+          npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache -o results.json
+        continue-on-error: true # the comparison with main decides, not one failure
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: eval-results
+          path: promptfoo/results.json

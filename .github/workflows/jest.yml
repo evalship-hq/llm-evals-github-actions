@@ -1,0 +1,34 @@
+name: jest
+on:
+  pull_request:
+    paths:
+      - jest/**
+      - .github/workflows/jest.yml
+  push:
+    branches: [main]
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: jest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npx jest evals --ci --reporters=default --reporters=jest-junit
+        continue-on-error: true # the comparison with main decides, not one failure
+        env:
+          JEST_JUNIT_OUTPUT_FILE: eval-results.xml
+          JEST_JUNIT_ADD_FILE_ATTRIBUTE: "true"
+          JEST_JUNIT_SUITE_NAME: "{filepath}"
+          JEST_JUNIT_CLASSNAME: "{classname}"
+          JEST_JUNIT_TITLE: "{title}"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: eval-results
+          path: jest/eval-results.xml

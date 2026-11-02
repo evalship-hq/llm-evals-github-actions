@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+description: promptfoo # the suite name in evalship, one per folder in this repository
+
+prompts:
+  - label: classify
+    raw: |
+      [
+        {"role": "system", "content": "Classify the customer support message as billing, bug or other. Reply with that one word only."},
+        {"role": "user", "content": "{{message}}"}
+      ]
+
+providers:
+  - openai:chat:gpt-6-luna
+
+defaultTest:
+  options:
+    transform: output.trim().toLowerCase()
+
+# Each test's description is its name in evalship. Without one, editing a var makes it a new test.
+tests:
+  - description: double-charge
+    vars:
+      message: I was charged twice for my subscription this month.
+    assert:
+      - type: equals
+        value: billing
+  - description: refund-request
+    vars:
+      message: Can I get a refund for the annual plan I bought yesterday?
+    assert:
+      - type: equals
+        value: billing
+  - description: app-crash
+    vars:
+      message: The app crashes every time I open the settings page.
+    assert:
+      - type: equals
+        value: bug
+  - description: export-error
+    vars:
+      message: Exporting a report to CSV fails with a 500 error.
+    assert:
+      - type: equals
+        value: bug
+  - description: dark-mode
+    vars:
+      message: Could you add a dark mode?
+    assert:
+      - type: equals
+        value: other
+  - description: support-hours
+    vars:
+      message: What are your support hours?
+    assert:
+      - type: equals
+        value: other

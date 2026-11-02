@@ -1,0 +1,29 @@
+name: vitest
+on:
+  pull_request:
+    paths:
+      - vitest/**
+      - .github/workflows/vitest.yml
+  push:
+    branches: [main]
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: vitest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npx vitest run evals --reporter=default --reporter=junit --outputFile.junit=eval-results.xml
+        continue-on-error: true # the comparison with main decides, not one failure
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: eval-results
+          path: vitest/eval-results.xml
