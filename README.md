@@ -33,3 +33,5 @@ To choose a tool, see [LLM evals on pull requests: how the tools compare](https:
 ## What evalship adds
 
 [evalship](https://evalship.com) is a GitHub App that reads the results file these workflows upload. On each pull request, it comments with the test cases the change broke compared with main, and whether a failure looks flaky.
+
+This repository runs it. Its results are on [evalship's page for this repository](https://evalship.com/gh/evalship-hq/llm-evals-github-actions/monitor), and [pull request #1](https://github.com/evalship-hq/llm-evals-github-actions/pull/1) shows the comment on a prompt change that breaks an eval.
