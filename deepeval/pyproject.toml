@@ -1,4 +1,5 @@
 [tool.pytest.ini_options]
 junit_family = "xunit1"  # keeps record_property in the XML
+junit_suite_name = "deepeval"  # the suite name in evalship, one per folder in this repository
 pythonpath = ["."]
 addopts = "-rs"  # prints why tests skipped
