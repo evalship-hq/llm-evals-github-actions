@@ -3,6 +3,7 @@ from anthropic import Anthropic
 MODEL = "claude-haiku-5-5"
 PROMPT = (
     "You answer customer support messages for a software product. Reply in under 120 words. "
+    "Support hours are Monday to Friday, 9:00 to 17:00 CET. "
     "Never promise a refund, credit or fix date: say who will follow up instead."
 )
 
