@@ -1,5 +1,7 @@
 # Run LLM evals in GitHub Actions on every pull request
 
+[![evalship](https://evalship.com/gh/evalship-hq/llm-evals-github-actions/badge.svg)](https://evalship.com/gh/evalship-hq/llm-evals-github-actions)
+
 The first seven folders run the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. In the last two, the support bot drafts a reply to the same six messages, and an LLM judge grades it. Each folder has its own workflow in [.github/workflows](.github/workflows).
 
 | Folder | Results file | Secrets | Guide |
@@ -34,4 +36,4 @@ To choose a tool, see [LLM evals on pull requests: how the tools compare](https:
 
 [evalship](https://evalship.com) is a GitHub App that reads the results file these workflows upload. On each pull request, it comments with the test cases the change broke compared with main, and whether a failure looks flaky.
 
-This repository runs it. Its results are on [evalship's page for this repository](https://evalship.com/gh/evalship-hq/llm-evals-github-actions/monitor), and [pull request #1](https://github.com/evalship-hq/llm-evals-github-actions/pull/1) shows the comment on a prompt change that breaks an eval.
+This repository runs it, and its [.evalship.yml](.evalship.yml) fails the check when a pull request breaks an eval. Its results are on [evalship's page for this repository](https://evalship.com/gh/evalship-hq/llm-evals-github-actions/monitor), and [pull request #1](https://github.com/evalship-hq/llm-evals-github-actions/pull/1) shows the comment and the failed check on a prompt change that breaks an eval.
