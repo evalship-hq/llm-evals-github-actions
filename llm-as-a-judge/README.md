@@ -4,7 +4,7 @@ Six pytest tests check the replies `reply()` in [support_bot.py](support_bot.py)
 
 The judge avoids the mistakes in [LLM as a judge: five mistakes in real eval suites](https://evalship.com/articles/llm-as-a-judge-mistakes):
 
-1. The judge is a different model from the one under test: `gpt-6-sol` grades `gpt-6-luna`. The run stops when the two match.
+1. The judge is a different model from the one under test: `claude-sonnet-5-5` grades `claude-haiku-5-5`. The run stops when the two match.
 2. The verdict comes from the criteria, in code. A judge reply that doesn't parse, or misses a criterion, fails the test.
 3. The judge gets the customer's message, the reply and the criteria.
 4. It grades the reply, not a whole conversation.
@@ -15,10 +15,10 @@ The judge avoids the mistakes in [LLM as a judge: five mistakes in real eval sui
 1. `cd llm-as-a-judge`
 2. `python -m venv .venv && source .venv/bin/activate`
 3. `pip install -r requirements.txt`
-4. `export OPENAI_API_KEY=<your key>`
+4. `export ANTHROPIC_API_KEY=<your key>`
 5. `pytest tests/evals --junitxml=eval-results.xml`
 
-Without `OPENAI_API_KEY`, the six tests skip and print why.
+Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
 
 ## The workflow
 

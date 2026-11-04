@@ -6,10 +6,10 @@ Six Vitest tests check that `classify()` in [support-bot.ts](support-bot.ts) lab
 
 1. `cd vitest`
 2. `npm install`
-3. `export OPENAI_API_KEY=<your key>`
+3. `export ANTHROPIC_API_KEY=<your key>`
 4. `npx vitest run evals`
 
-Without `OPENAI_API_KEY`, the six tests skip with a warning.
+Without `ANTHROPIC_API_KEY`, the six tests skip with a warning.
 
 ## The workflow
 

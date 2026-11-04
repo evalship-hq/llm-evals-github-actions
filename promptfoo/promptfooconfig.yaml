@@ -10,7 +10,7 @@ prompts:
       ]
 
 providers:
-  - openai:chat:gpt-6-luna
+  - anthropic:messages:claude-haiku-5-5
 
 defaultTest:
   options:

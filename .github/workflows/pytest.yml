@@ -21,7 +21,7 @@ jobs:
       - run: pytest tests/evals --junitxml=eval-results.xml -o junit_family=xunit1
         continue-on-error: true # the comparison with main decides, not one failure
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - uses: actions/upload-artifact@v7
         if: always()
         with:

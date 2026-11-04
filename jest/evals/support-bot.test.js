@@ -10,8 +10,8 @@ const cases = [
   { id: "support-hours", message: "What are your support hours?", expected: "other" },
 ]
 
-const hasKey = Boolean(process.env.OPENAI_API_KEY)
-if (!hasKey) console.warn("OPENAI_API_KEY is not set, so the evals can't call the model. Skipping them.")
+const hasKey = Boolean(process.env.ANTHROPIC_API_KEY)
+if (!hasKey) console.warn("ANTHROPIC_API_KEY is not set, so the evals can't call the model. Skipping them.")
 
 describe("support bot", () => {
   ;(hasKey ? test : test.skip).each(cases)("$id", async ({ message, expected }) => {

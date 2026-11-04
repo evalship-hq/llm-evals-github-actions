@@ -6,7 +6,7 @@ from langsmith import Client
 
 from support_bot import classify
 
-KEYS = ["LANGSMITH_API_KEY", "OPENAI_API_KEY"]
+KEYS = ["LANGSMITH_API_KEY", "ANTHROPIC_API_KEY"]
 if missing := [k for k in KEYS if not os.environ.get(k)]:
     print(f"Skipping the evaluation: {', '.join(missing)} not set.")
     sys.exit(0)

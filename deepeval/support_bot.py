@@ -1,6 +1,6 @@
-from openai import OpenAI
+from anthropic import Anthropic
 
-MODEL = "gpt-6-luna"
+MODEL = "claude-haiku-5-5"
 PROMPT = (
     "You answer customer support messages for a software product. Reply in under 120 words. "
     "Never promise a refund, credit or fix date: say who will follow up instead."
@@ -9,9 +9,12 @@ PROMPT = (
 
 def reply(message: str) -> str:
     """Return a draft reply to a customer support message."""
-    client = OpenAI()  # created here, not on import, so the evals can skip without a key
-    response = client.chat.completions.create(
+    client = Anthropic()  # created here, not on import, so the evals can skip without a key
+    response = client.messages.create(
         model=MODEL,
-        messages=[{"role": "system", "content": PROMPT}, {"role": "user", "content": message}],
+        max_tokens=4096,
+        system=PROMPT,
+        messages=[{"role": "user", "content": message}],
     )
-    return (response.choices[0].message.content or "").strip()
+    # The model thinks first by default, so the reply is in the text blocks after its thinking block.
+    return "".join(block.text for block in response.content if block.type == "text").strip()

@@ -7,7 +7,7 @@ from langfuse.api import NotFoundError
 
 from support_bot import classify
 
-KEYS = ["LANGFUSE_PUBLIC_KEY", "LANGFUSE_SECRET_KEY", "OPENAI_API_KEY"]
+KEYS = ["LANGFUSE_PUBLIC_KEY", "LANGFUSE_SECRET_KEY", "ANTHROPIC_API_KEY"]
 if missing := [k for k in KEYS if not os.environ.get(k)]:
     print(f"Skipping the experiment: {', '.join(missing)} not set.")
     sys.exit(0)

@@ -5,7 +5,7 @@ import pytest
 from support_bot import classify
 
 pytestmark = pytest.mark.skipif(
-    not os.environ.get("OPENAI_API_KEY"), reason="OPENAI_API_KEY is not set, so the evals can't call the model"
+    not os.environ.get("ANTHROPIC_API_KEY"), reason="ANTHROPIC_API_KEY is not set, so the evals can't call the model"
 )
 
 CASES = [

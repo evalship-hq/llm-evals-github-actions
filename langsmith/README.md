@@ -9,7 +9,7 @@ On its first run, the script creates the dataset from its six cases. After that,
 1. `cd langsmith`
 2. `python -m venv .venv && source .venv/bin/activate`
 3. `pip install -r requirements.txt`
-4. `export LANGSMITH_API_KEY=<key> OPENAI_API_KEY=<key>`
+4. `export LANGSMITH_API_KEY=<key> ANTHROPIC_API_KEY=<key>`
 5. `python run_evaluation.py`
 
 Without one of the keys, the script says which is missing and exits without running.

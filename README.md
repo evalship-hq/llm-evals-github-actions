@@ -4,15 +4,15 @@ The first seven folders run the same evals with a different tool. The prompt cla
 
 | Folder | Results file | Secrets | Guide |
 |---|---|---|---|
-| [pytest](pytest) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM evals with pytest in GitHub Actions](https://evalship.com/articles/llm-evals-with-pytest) |
-| [vitest](vitest) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM evals with Vitest in GitHub Actions](https://evalship.com/articles/llm-evals-with-vitest) |
-| [jest](jest) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM evals with Jest in GitHub Actions](https://evalship.com/articles/llm-evals-with-jest) |
-| [promptfoo](promptfoo) | promptfoo JSON, `results.json` | `OPENAI_API_KEY` | [Replacing OpenAI Evals: promptfoo in CI without flaky reds](https://evalship.com/articles/openai-evals-to-promptfoo) |
-| [langfuse](langfuse) | evalship JSON, `eval-results.json` | `OPENAI_API_KEY`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` | [Langfuse experiments on every pull request](https://evalship.com/articles/langfuse-experiments-in-ci) |
-| [braintrust](braintrust) | evalship JSON, `eval-results.json` | `OPENAI_API_KEY`, `BRAINTRUST_API_KEY` | [Braintrust evals on every pull request](https://evalship.com/articles/braintrust-evals-in-ci) |
-| [langsmith](langsmith) | evalship JSON, `eval-results.json` | `OPENAI_API_KEY`, `LANGSMITH_API_KEY` | [LangSmith evaluations on every pull request](https://evalship.com/articles/langsmith-evals-in-ci) |
-| [deepeval](deepeval) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM evals with pytest in GitHub Actions: DeepEval](https://evalship.com/articles/llm-evals-with-pytest#deepeval) |
-| [llm-as-a-judge](llm-as-a-judge) | JUnit XML, `eval-results.xml` | `OPENAI_API_KEY` | [LLM as a judge: five mistakes in real eval suites](https://evalship.com/articles/llm-as-a-judge-mistakes) |
+| [pytest](pytest) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with pytest in GitHub Actions](https://evalship.com/articles/llm-evals-with-pytest) |
+| [vitest](vitest) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with Vitest in GitHub Actions](https://evalship.com/articles/llm-evals-with-vitest) |
+| [jest](jest) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with Jest in GitHub Actions](https://evalship.com/articles/llm-evals-with-jest) |
+| [promptfoo](promptfoo) | promptfoo JSON, `results.json` | `ANTHROPIC_API_KEY` | [Replacing OpenAI Evals: promptfoo in CI without flaky reds](https://evalship.com/articles/openai-evals-to-promptfoo) |
+| [langfuse](langfuse) | evalship JSON, `eval-results.json` | `ANTHROPIC_API_KEY`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` | [Langfuse experiments on every pull request](https://evalship.com/articles/langfuse-experiments-in-ci) |
+| [braintrust](braintrust) | evalship JSON, `eval-results.json` | `ANTHROPIC_API_KEY`, `BRAINTRUST_API_KEY` | [Braintrust evals on every pull request](https://evalship.com/articles/braintrust-evals-in-ci) |
+| [langsmith](langsmith) | evalship JSON, `eval-results.json` | `ANTHROPIC_API_KEY`, `LANGSMITH_API_KEY` | [LangSmith evaluations on every pull request](https://evalship.com/articles/langsmith-evals-in-ci) |
+| [deepeval](deepeval) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with pytest in GitHub Actions: DeepEval](https://evalship.com/articles/llm-evals-with-pytest#deepeval) |
+| [llm-as-a-judge](llm-as-a-judge) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM as a judge: five mistakes in real eval suites](https://evalship.com/articles/llm-as-a-judge-mistakes) |
 
 To choose a tool, see [LLM evals on pull requests: how the tools compare](https://evalship.com/articles/llm-evals-on-pull-requests).
 

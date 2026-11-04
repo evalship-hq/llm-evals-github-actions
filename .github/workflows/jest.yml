@@ -26,7 +26,7 @@ jobs:
           JEST_JUNIT_SUITE_NAME: "{filepath}"
           JEST_JUNIT_CLASSNAME: "{classname}"
           JEST_JUNIT_TITLE: "{title}"
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - uses: actions/upload-artifact@v7
         if: always()
         with:

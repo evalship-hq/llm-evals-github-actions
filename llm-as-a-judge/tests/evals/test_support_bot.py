@@ -6,7 +6,7 @@ from judge import grade
 from support_bot import reply
 
 pytestmark = pytest.mark.skipif(
-    not os.environ.get("OPENAI_API_KEY"), reason="OPENAI_API_KEY is not set, so the evals can't call the model"
+    not os.environ.get("ANTHROPIC_API_KEY"), reason="ANTHROPIC_API_KEY is not set, so the evals can't call the model"
 )
 
 CASES = [

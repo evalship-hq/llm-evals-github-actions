@@ -2,16 +2,17 @@ import os
 
 import pytest
 from deepeval.metrics import AnswerRelevancyMetric
+from deepeval.models import AnthropicModel
 from deepeval.test_case import LLMTestCase
 
 from support_bot import MODEL, reply
 
 pytestmark = pytest.mark.skipif(
-    not os.environ.get("OPENAI_API_KEY"), reason="OPENAI_API_KEY is not set, so the evals can't call the model"
+    not os.environ.get("ANTHROPIC_API_KEY"), reason="ANTHROPIC_API_KEY is not set, so the evals can't call the model"
 )
 
 # A model rates its own text higher, so the metric grades with another model, and the run stops if the two match.
-JUDGE_MODEL = "gpt-6-sol"
+JUDGE_MODEL = "claude-sonnet-5-5"
 if JUDGE_MODEL == MODEL:
     raise RuntimeError(f"The judge is {JUDGE_MODEL}, the model under test. Pick another judge.")
 
@@ -26,10 +27,10 @@ CASES = [
 
 
 @pytest.mark.parametrize("message", CASES)
-def test_reply(message, record_property):
+def test_relevancy(message, record_property):
     case = LLMTestCase(input=message, actual_output=reply(message))
     record_property("output", case.actual_output)
-    metric = AnswerRelevancyMetric(threshold=0.7, model=JUDGE_MODEL)  # built here, not on import: it needs the key
+    metric = AnswerRelevancyMetric(threshold=0.7, model=AnthropicModel(model=JUDGE_MODEL))  # built here, not on import: it needs the key
     # measure() and is_successful() instead of assert_test, so the score reaches the JUnit XML
     metric.measure(case)
     record_property("score", metric.score)

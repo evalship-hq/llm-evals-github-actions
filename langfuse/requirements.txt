@@ -1,2 +1,2 @@
 langfuse>=5.1
-openai>=3.42
+anthropic>=2.4

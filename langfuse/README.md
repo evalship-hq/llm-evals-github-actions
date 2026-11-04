@@ -9,7 +9,7 @@ On its first run, the script creates the dataset from its six cases. After that,
 1. `cd langfuse`
 2. `python -m venv .venv && source .venv/bin/activate`
 3. `pip install -r requirements.txt`
-4. `export LANGFUSE_PUBLIC_KEY=<key> LANGFUSE_SECRET_KEY=<key> LANGFUSE_BASE_URL=https://cloud.langfuse.com OPENAI_API_KEY=<key>`
+4. `export LANGFUSE_PUBLIC_KEY=<key> LANGFUSE_SECRET_KEY=<key> LANGFUSE_BASE_URL=https://cloud.langfuse.com ANTHROPIC_API_KEY=<key>`
 5. `python run_experiment.py`
 
 Without one of the keys, the script says which is missing and exits without running.

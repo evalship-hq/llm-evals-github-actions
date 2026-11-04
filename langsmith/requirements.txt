@@ -1,2 +1,2 @@
 langsmith>=0.14
-openai>=3.42
+anthropic>=2.4

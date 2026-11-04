@@ -9,7 +9,7 @@ Each record's `metadata.id` is its key, so a test case keeps its history when yo
 1. `cd braintrust`
 2. `python -m venv .venv && source .venv/bin/activate`
 3. `pip install -r requirements.txt`
-4. `export BRAINTRUST_API_KEY=<key> OPENAI_API_KEY=<key>`
+4. `export BRAINTRUST_API_KEY=<key> ANTHROPIC_API_KEY=<key>`
 5. `python support_bot_eval.py`
 
 Run it with `python`, not `braintrust eval`. Under `braintrust eval`, `Eval()` returns no results, so there's nothing to write. Without one of the keys, the script says which is missing and exits without running.

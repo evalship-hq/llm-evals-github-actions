@@ -7,10 +7,10 @@
 promptfoo needs Node.js 22.22 or later.
 
 1. `cd promptfoo`
-2. `export OPENAI_API_KEY=<your key>`
+2. `export ANTHROPIC_API_KEY=<your key>`
 3. `npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache -o results.json`
 
-Without `OPENAI_API_KEY`, promptfoo stops and asks for it. The workflow checks for the key first and skips the evals with a notice.
+Without `ANTHROPIC_API_KEY`, promptfoo stops and asks for it. The workflow checks for the key first and skips the evals with a notice.
 
 ## The workflow
 

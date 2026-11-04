@@ -12,10 +12,10 @@ Jest can't attach data to a test's result, so three small files put the model's 
 
 1. `cd jest`
 2. `npm install`
-3. `export OPENAI_API_KEY=<your key>`
+3. `export ANTHROPIC_API_KEY=<your key>`
 4. `npx jest evals`
 
-Without `OPENAI_API_KEY`, the six tests skip with a warning.
+Without `ANTHROPIC_API_KEY`, the six tests skip with a warning.
 
 ## The workflow
 

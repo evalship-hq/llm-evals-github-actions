@@ -1,11 +1,11 @@
 import json
 
-from openai import OpenAI
+from anthropic import Anthropic
 
 from support_bot import MODEL
 
 # A model rates its own text higher, so the judge is another model, and the run stops if the two match.
-JUDGE_MODEL = "gpt-6-sol"
+JUDGE_MODEL = "claude-sonnet-5-5"
 if JUDGE_MODEL == MODEL:
     raise RuntimeError(f"The judge is {JUDGE_MODEL}, the model under test. Pick another judge.")
 
@@ -19,20 +19,34 @@ PROMPT = (
     '{"answers": {"<criterion id>": "yes" or "no"}, "reason": "<one sentence on each no>"}\n\nCriteria:\n'
     + "\n".join(f"{id}: {text}" for id, text in CRITERIA.items())
 )
+# Structured output: the judge's reply is this JSON, so a verdict never hides in prose or a code fence.
+SCHEMA = {
+    "type": "object",
+    "properties": {
+        "answers": {
+            "type": "object",
+            "properties": {id: {"type": "string", "enum": ["yes", "no"]} for id in CRITERIA},
+            "required": list(CRITERIA),
+            "additionalProperties": False,
+        },
+        "reason": {"type": "string"},
+    },
+    "required": ["answers", "reason"],
+    "additionalProperties": False,
+}
 
 
 def grade(message: str, reply: str) -> dict:
     """Return the judge's yes or no for each criterion, and its reason."""
-    client = OpenAI()
-    response = client.chat.completions.create(
+    client = Anthropic()
+    response = client.messages.create(
         model=JUDGE_MODEL,
-        response_format={"type": "json_object"},
-        messages=[
-            {"role": "system", "content": PROMPT},
-            {"role": "user", "content": f"Customer message:\n{message}\n\nReply:\n{reply}"},
-        ],
+        max_tokens=8192,
+        system=PROMPT,
+        messages=[{"role": "user", "content": f"Customer message:\n{message}\n\nReply:\n{reply}"}],
+        output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
     )
-    raw = response.choices[0].message.content or ""
+    raw = "".join(block.text for block in response.content if block.type == "text")
     # A reply that doesn't parse, or misses a criterion, is never a pass: the test fails with what the judge said.
     try:
         verdict = json.loads(raw)

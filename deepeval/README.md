@@ -2,17 +2,17 @@
 
 Six DeepEval tests grade the replies `reply()` in [support_bot.py](support_bot.py) drafts for support messages, with DeepEval's answer relevancy metric. Each test measures the metric itself instead of calling `assert_test`. It records the reply, the score and the threshold with `record_property`, which puts them in the JUnit XML.
 
-The metric grades with `gpt-6-sol`, a different model from the `gpt-6-luna` under test. The run stops when the two match.
+The metric grades with `claude-sonnet-5-5`, a different model from the `claude-haiku-5-5` under test. The run stops when the two match.
 
 ## Run it locally
 
 1. `cd deepeval`
 2. `python -m venv .venv && source .venv/bin/activate`
 3. `pip install -r requirements.txt`
-4. `export OPENAI_API_KEY=<your key>`
+4. `export ANTHROPIC_API_KEY=<your key>`
 5. `pytest tests/evals --junitxml=eval-results.xml`
 
-`deepeval test run tests/evals --junitxml=eval-results.xml` works too. Without `OPENAI_API_KEY`, the six tests skip and print why.
+`deepeval test run tests/evals --junitxml=eval-results.xml` works too. Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
 
 ## The workflow
 

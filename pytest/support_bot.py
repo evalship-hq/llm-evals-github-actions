@@ -1,14 +1,17 @@
-from openai import OpenAI
+from anthropic import Anthropic
 
-MODEL = "gpt-6-luna"
+MODEL = "claude-haiku-5-5"
 PROMPT = "Classify the customer support message as billing, bug or other. Reply with that one word only."
 
 
 def classify(message: str) -> str:
     """Return billing, bug or other for a customer support message."""
-    client = OpenAI()  # created here, not on import, so the evals can skip without a key
-    reply = client.chat.completions.create(
+    client = Anthropic()  # created here, not on import, so the evals can skip without a key
+    reply = client.messages.create(
         model=MODEL,
-        messages=[{"role": "system", "content": PROMPT}, {"role": "user", "content": message}],
+        max_tokens=4096,
+        system=PROMPT,
+        messages=[{"role": "user", "content": message}],
     )
-    return (reply.choices[0].message.content or "").strip().lower()
+    # The model thinks first by default, so the answer is in the text blocks after its thinking block.
+    return "".join(block.text for block in reply.content if block.type == "text").strip().lower()

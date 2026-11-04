@@ -6,7 +6,7 @@ from braintrust import Eval
 
 from support_bot import classify
 
-KEYS = ["BRAINTRUST_API_KEY", "OPENAI_API_KEY"]
+KEYS = ["BRAINTRUST_API_KEY", "ANTHROPIC_API_KEY"]
 if missing := [k for k in KEYS if not os.environ.get(k)]:
     print(f"Skipping the eval: {', '.join(missing)} not set.")
     sys.exit(0)

@@ -7,10 +7,10 @@ Six pytest tests check that `classify()` in [support_bot.py](support_bot.py) lab
 1. `cd pytest`
 2. `python -m venv .venv && source .venv/bin/activate`
 3. `pip install -r requirements.txt`
-4. `export OPENAI_API_KEY=<your key>`
+4. `export ANTHROPIC_API_KEY=<your key>`
 5. `pytest tests/evals --junitxml=eval-results.xml`
 
-Without `OPENAI_API_KEY`, the six tests skip and print why.
+Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
 
 ## The workflow
 
