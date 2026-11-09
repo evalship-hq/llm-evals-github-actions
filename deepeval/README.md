@@ -1,6 +1,6 @@
 # LLM evals with DeepEval
 
-Six DeepEval tests grade the replies `reply()` in [support_bot.py](support_bot.py) drafts for support messages, with DeepEval's answer relevancy metric. Each test measures the metric itself instead of calling `assert_test`. It records the reply, the score and the threshold with `record_property`, which puts them in the JUnit XML.
+Six DeepEval tests grade the replies `reply()` in [support_bot.py](support_bot.py) drafts for support messages. Code in [checks.py](checks.py) checks the prompt's 120-word limit, and the support hours in the reply to the support-hours question. A G-Eval metric in strict mode fails a reply that promises a refund, a credit or a fix date, and DeepEval's answer relevancy metric grades the rest. On the support-hours case, relevancy is only recorded: a right answer there is three sentences, so one off-topic sentence fails it by chance. Each test measures the metric itself instead of calling `assert_test`. It records the reply, the score and the threshold with `record_property`, which puts them in the JUnit XML.
 
 The metric grades with `claude-sonnet-5-5`, a different model from the `claude-haiku-5-5` under test. The run stops when the two match.
 
@@ -12,7 +12,7 @@ The metric grades with `claude-sonnet-5-5`, a different model from the `claude-h
 4. `export ANTHROPIC_API_KEY=<your key>`
 5. `pytest tests/evals --junitxml=eval-results.xml`
 
-`deepeval test run tests/evals --junitxml=eval-results.xml` works too. Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
+`pytest tests/checks` tries the code checks on made-up replies, with no model call. The workflow runs it before the evals. `deepeval test run tests/evals --junitxml=eval-results.xml` works too. Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
 
 ## The workflow
 

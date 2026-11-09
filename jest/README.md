@@ -21,6 +21,6 @@ Without `ANTHROPIC_API_KEY`, the six tests skip with a warning.
 
 [jest.yml](../.github/workflows/jest.yml) runs on pull requests that change this folder and on every push to main. It writes `eval-results.xml` with jest-junit and uploads it as the `eval-results` artifact, also when evals fail. `continue-on-error: true` keeps a failing eval from failing the job.
 
-The five `JEST_JUNIT_*` settings in the workflow name each test by its describe block and title, in a suite named after its file.
+The five `JEST_JUNIT_*` settings in the workflow name each test by its describe block and title, in the suite `support-bot-jest`. Named after its file, it would share `support-bot` with the vitest folder's suite in evalship.
 
 [LLM evals with Jest in GitHub Actions](https://evalship.com/articles/llm-evals-with-jest) covers each setting and why.

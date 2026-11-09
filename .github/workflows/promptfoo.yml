@@ -22,7 +22,7 @@ jobs:
             echo "::notice::ANTHROPIC_API_KEY is not set, so the evals are skipped."
             exit 0
           fi
-          npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache -o results.json
+          npx promptfoo@0.125.1 eval -c promptfooconfig.yaml --no-cache -o results.json
         continue-on-error: true # the comparison with main decides, not one failure
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

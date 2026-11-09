@@ -1,6 +1,6 @@
 # LLM as a judge
 
-Six pytest tests check the replies `reply()` in [support_bot.py](support_bot.py) drafts for support messages. Code checks the length. A judge in [judge.py](judge.py) grades the rest, with a yes or no for each of three criteria. Each test records the reply, the judge's answers and its reason with `record_property`, which puts them in the JUnit XML.
+Six pytest tests check the replies `reply()` in [support_bot.py](support_bot.py) drafts for support messages. Code in [checks.py](checks.py) checks the length, and the hours in the reply to the support-hours question. A judge in [judge.py](judge.py) grades the rest, with a yes or no for each of three criteria. Each test records the reply, the judge's answers and its reason with `record_property`, which puts them in the JUnit XML.
 
 The judge avoids the mistakes in [LLM as a judge: five mistakes in real eval suites](https://evalship.com/articles/llm-as-a-judge-mistakes):
 
@@ -8,7 +8,7 @@ The judge avoids the mistakes in [LLM as a judge: five mistakes in real eval sui
 2. The verdict comes from the criteria, in code. A judge reply that doesn't parse, or misses a criterion, fails the test.
 3. The judge gets the customer's message, the reply and the criteria.
 4. It grades the reply, not a whole conversation.
-5. Code checks what code can: the 120-word limit. The judge grades only what needs reading.
+5. Code checks what code can: the 120-word limit and the support hours. The judge grades only what needs reading.
 
 ## Run it locally
 
@@ -18,7 +18,7 @@ The judge avoids the mistakes in [LLM as a judge: five mistakes in real eval sui
 4. `export ANTHROPIC_API_KEY=<your key>`
 5. `pytest tests/evals --junitxml=eval-results.xml`
 
-Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
+Without `ANTHROPIC_API_KEY`, the six tests skip and print why. `pytest tests/checks` tries the code checks on made-up replies, with no model call. The workflow runs it before the evals.
 
 ## The workflow
 
