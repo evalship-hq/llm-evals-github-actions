@@ -23,7 +23,7 @@ jobs:
         env:
           JEST_JUNIT_OUTPUT_FILE: eval-results.xml
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: "true"
-          JEST_JUNIT_SUITE_NAME: "{filepath}"
+          JEST_JUNIT_SUITE_NAME: "support-bot-jest" # vitest's suite is support-bot, after its file
           JEST_JUNIT_CLASSNAME: "{classname}"
           JEST_JUNIT_TITLE: "{title}"
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

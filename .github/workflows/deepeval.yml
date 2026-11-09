@@ -18,6 +18,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      - run: pytest tests/checks # the evals' code checks on made-up replies, no model call
       - run: pytest tests/evals --junitxml=eval-results.xml
         continue-on-error: true # the comparison with main decides, not one failure
         env:

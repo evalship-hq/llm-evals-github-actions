@@ -8,7 +8,7 @@ promptfoo needs Node.js 22.22 or later.
 
 1. `cd promptfoo`
 2. `export ANTHROPIC_API_KEY=<your key>`
-3. `npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache -o results.json`
+3. `npx promptfoo@0.125.1 eval -c promptfooconfig.yaml --no-cache -o results.json`
 
 Without `ANTHROPIC_API_KEY`, promptfoo stops and asks for it. The workflow checks for the key first and skips the evals with a notice.
 
@@ -16,6 +16,7 @@ Without `ANTHROPIC_API_KEY`, promptfoo stops and asks for it. The workflow check
 
 [promptfoo.yml](../.github/workflows/promptfoo.yml) runs on pull requests that change this folder and on every push to main. It uploads `results.json` as the `eval-results` artifact, also when evals fail.
 
+- `promptfoo@0.125.1` pins the version, so a new promptfoo release can't change the results without a commit.
 - `--no-cache` asks the model on every run. By default, promptfoo replays answers it cached on disk.
 - promptfoo exits with code 100 when any test fails. `continue-on-error: true` keeps that from failing the job.
 
