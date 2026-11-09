@@ -1,3 +1,4 @@
-# evalship's check fails a pull request that breaks an eval passing on main: https://evalship.com/docs/configuration
+# evalship's check fails a pull request that breaks an eval passing on main, or has an eval flaw nobody fixed or dismissed: https://evalship.com/docs/configuration
 gate:
   fail_on_new_failures: true
+  fail_on_flaws: true
