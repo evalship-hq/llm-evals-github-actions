@@ -5,7 +5,7 @@ DAYS = r"\bmon(day)?\s*(to|through|until|-|–|—)\s*fri(day)?\b"
 TIME = r"(?<![\d:])0?9(:00)?\s*(am)?\s*(to|until|and|-|–|—)\s*(17:00|5(:00)?\s*(pm)?)(?![\d:])"
 NEGATION = r"\b(not|never|no longer|closed)\b|n['’]t"
 CLOCK = r"(?<![\d:])(\d{1,2})(?::(\d\d))?\s*(am|pm)\b|(?<![\d:])(\d{1,2}):(\d\d)(?![\d:])"
-ALWAYS = r"24/7|24 hours|round the clock"
+ALWAYS = r"24/7|24 hours a day|round the clock"
 
 
 def under_word_limit(reply: str) -> bool:

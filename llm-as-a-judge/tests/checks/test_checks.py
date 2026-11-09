@@ -11,6 +11,7 @@ RIGHT_HOURS = [
     "Hours: Monday-Friday, 9am to 5pm CET.",
     "We're available Monday to Friday, 9 a.m. to 5 p.m. CET.",
     "Monday to Friday, 9 to 5 CET.",
+    "Monday to Friday, 9:00 to 17:00 CET, and we'll reply within 24 hours.",
 ]
 WRONG_HOURS = [
     "",
@@ -25,6 +26,7 @@ WRONG_HOURS = [
     "We aren't open Monday to Friday, 9:00 to 17:00 CET anymore.",
     "Monday to Friday we answer email. Phones run 9:00 to 17:00 CET.",  # days and times in different sentences
     "Monday to Friday, 9:00 to 17:00 CET. We also answer 24/7.",
+    "Monday to Friday, 9:00 to 17:00 CET, and by chat 24 hours a day.",
     "Monday to Friday, 9:00 to 17:00 CET, and Saturday 10:00 to 14:00 CET.",
     "Monday to Friday, 9:00 to 17:30 CET.",
     "Monday to Friday, 9 a.m. to 5:30 p.m. CET.",
