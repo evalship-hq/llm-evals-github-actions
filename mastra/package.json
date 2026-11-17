@@ -1,0 +1,15 @@
+{
+  "name": "llm-evals-mastra",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "evals": "vitest run evals"
+  },
+  "dependencies": {
+    "@mastra/core": "^1.83.0",
+    "@mastra/evals": "^1.10.11"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  }
+}
