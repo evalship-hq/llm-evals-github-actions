@@ -20,7 +20,8 @@ test.skipIf(!hasKey).for(cases)("$id", { timeout: 60_000 }, async ({ input, grou
   await expectEval({
     target: mastra.getAgent("supportAgent"),
     data: { input, groundTruth },
-    gates: [checks.equals(groundTruth)],
+    // The label alone, whatever its case or the whitespace around it: checks.equals ignores case but doesn't trim.
+    gates: [checks.matches(new RegExp(`^\\s*${groundTruth}\\s*$`, "i"))],
     onItemComplete: ({ targetResult }) => annotate(targetResult.text, "output"),
   }).toPass()
 })

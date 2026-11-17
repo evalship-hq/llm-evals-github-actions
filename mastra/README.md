@@ -1,6 +1,6 @@
 # LLM evals with Mastra
 
-Six Vitest tests check that the Mastra agent in [support-agent.ts](support-agent.ts) labels a support message as billing, bug or other. Each test runs one item through Mastra's `expectEval` with a `checks.equals` gate. `test.for` names each test case by its id, so it keeps its name when you edit its message. Each test records the agent's answer with `annotate`, which the JUnit reporter writes as a property.
+Six Vitest tests check that the Mastra agent in [support-agent.ts](support-agent.ts) labels a support message as billing, bug or other. Each test runs one item through Mastra's `expectEval` with a `checks.matches` gate. `test.for` names each test case by its id, so it keeps its name when you edit its message. Each test records the agent's answer with `annotate`, which the JUnit reporter writes as a property.
 
 ## Run it locally
 
