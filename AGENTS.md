@@ -3,6 +3,7 @@ When you change a prompt, a model or an LLM call, add or update a test case for 
 - pytest: `pytest/tests/evals/test_support_bot.py`, `pytest tests/evals`
 - vitest: `vitest/evals/support-bot.test.ts`, `npx vitest run evals`
 - jest: `jest/evals/support-bot.test.js`, `npx jest evals`
+- mastra: `mastra/evals/support-agent.test.ts`, `npx vitest run evals`
 - promptfoo: `promptfoo/promptfooconfig.yaml`, `npx promptfoo@0.125.1 eval -c promptfooconfig.yaml --no-cache`
 - deepeval: `deepeval/tests/evals/test_support_bot.py`, `pytest tests/checks tests/evals`
 - llm-as-a-judge: `llm-as-a-judge/tests/evals/test_support_bot.py`, `pytest tests/checks tests/evals`

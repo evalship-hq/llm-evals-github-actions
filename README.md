@@ -2,13 +2,14 @@
 
 [![evalship](https://evalship.com/gh/evalship-hq/llm-evals-github-actions/badge.svg)](https://evalship.com/gh/evalship-hq/llm-evals-github-actions)
 
-The first seven folders run the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. In the last two, the support bot drafts a reply to the same six messages, and an LLM judge grades it. Each folder has its own workflow in [.github/workflows](.github/workflows).
+The first eight folders run the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. In the last two, the support bot drafts a reply to the same six messages, and an LLM judge grades it. Each folder has its own workflow in [.github/workflows](.github/workflows).
 
 | Folder | Results file | Secrets | Guide |
 |---|---|---|---|
 | [pytest](pytest) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with pytest in GitHub Actions](https://evalship.com/articles/llm-evals-with-pytest) |
 | [vitest](vitest) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with Vitest in GitHub Actions](https://evalship.com/articles/llm-evals-with-vitest) |
 | [jest](jest) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [LLM evals with Jest in GitHub Actions](https://evalship.com/articles/llm-evals-with-jest) |
+| [mastra](mastra) | JUnit XML, `eval-results.xml` | `ANTHROPIC_API_KEY` | [Mastra evals on every pull request](https://evalship.com/articles/mastra-evals-in-ci) |
 | [promptfoo](promptfoo) | promptfoo JSON, `results.json` | `ANTHROPIC_API_KEY` | [Replacing OpenAI Evals: promptfoo in CI without flaky reds](https://evalship.com/articles/openai-evals-to-promptfoo) |
 | [langfuse](langfuse) | evalship JSON, `eval-results.json` | `ANTHROPIC_API_KEY`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` | [Langfuse experiments on every pull request](https://evalship.com/articles/langfuse-experiments-in-ci) |
 | [braintrust](braintrust) | evalship JSON, `eval-results.json` | `ANTHROPIC_API_KEY`, `BRAINTRUST_API_KEY` | [Braintrust evals on every pull request](https://evalship.com/articles/braintrust-evals-in-ci) |
