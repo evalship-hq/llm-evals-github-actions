@@ -13,7 +13,9 @@ CASES = [
     pytest.param("Can I get a refund for the annual plan I bought yesterday?", "billing", id="refund-request"),
     pytest.param("The app crashes every time I open the settings page.", "bug", id="app-crash"),
     pytest.param("Exporting a report to CSV fails with a 500 error.", "bug", id="export-error"),
-    pytest.param("Could you add a dark mode?", "other", id="dark-mode"),
+    pytest.param("Could you add a dark mode?", "feature", id="dark-mode"),
+    pytest.param("It would be great if I could export reports as PDF.", "feature", id="feature-request"),
+    pytest.param("How does the export feature work?", "other", id="feature-question"),
     pytest.param("What are your support hours?", "other", id="support-hours"),
 ]
 
@@ -23,9 +25,3 @@ def test_classify(message, expected, record_property):
     label = classify(message)
     record_property("output", label)
     assert label == expected
-
-
-def test_classify_feature_request(record_property):
-    label = classify("It would be great if I could export invoices as PDF.")
-    record_property("output", label)
-    assert label in ("feature", "other")

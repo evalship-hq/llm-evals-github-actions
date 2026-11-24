@@ -2,7 +2,7 @@
 
 [![evalship](https://evalship.com/gh/evalship-hq/llm-evals-github-actions/badge.svg)](https://evalship.com/gh/evalship-hq/llm-evals-github-actions)
 
-The first eight folders run the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. In the last two, the support bot drafts a reply to the same six messages, and an LLM judge grades it. Each folder has its own workflow in [.github/workflows](.github/workflows).
+The first eight folders run the same evals with a different tool. The prompt classifies a customer support message as billing, bug or other, and six test cases check it. The pytest folder adds a feature label and two more test cases. In the last two, the support bot drafts a reply to the same six messages, and an LLM judge grades it. Each folder has its own workflow in [.github/workflows](.github/workflows).
 
 | Folder | Results file | Secrets | Guide |
 |---|---|---|---|
