@@ -23,3 +23,9 @@ def test_classify(message, expected, record_property):
     label = classify(message)
     record_property("output", label)
     assert label == expected
+
+
+def test_classify_feature_request(record_property):
+    label = classify("It would be great if I could export invoices as PDF.")
+    record_property("output", label)
+    assert label in ("feature", "other")
