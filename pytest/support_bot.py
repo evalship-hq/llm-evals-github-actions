@@ -1,7 +1,12 @@
 from anthropic import Anthropic
 
 MODEL = "claude-haiku-5-5"
-PROMPT = "Classify the customer support message as billing, bug, feature or other. Reply with that one word only."
+PROMPT = (
+    "Classify the customer support message as billing, bug, feature or other. "
+    "Use feature only when the customer asks for something the product doesn't do yet. "
+    "A question about how an existing feature works is other. "
+    "Reply with that one word only."
+)
 
 
 def classify(message: str) -> str:
