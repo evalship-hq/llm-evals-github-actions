@@ -1,6 +1,6 @@
 # LLM evals with pytest
 
-Six pytest tests check that `classify()` in [support_bot.py](support_bot.py) labels a support message as billing, bug or other. Each test case has an id, so it keeps its name when you edit its message. Each test records the model's answer with `record_property`, which puts it in the JUnit XML.
+Seven pytest tests check that `classify()` in [support_bot.py](support_bot.py) labels a support message as billing, bug or other. Each test case has an id, so it keeps its name when you edit its message. Each test records the model's answer with `record_property`, which puts it in the JUnit XML.
 
 ## Run it locally
 
@@ -10,7 +10,7 @@ Six pytest tests check that `classify()` in [support_bot.py](support_bot.py) lab
 4. `export ANTHROPIC_API_KEY=<your key>`
 5. `pytest tests/evals --junitxml=eval-results.xml`
 
-Without `ANTHROPIC_API_KEY`, the six tests skip and print why.
+Without `ANTHROPIC_API_KEY`, the seven tests skip and print why.
 
 ## The workflow
 
